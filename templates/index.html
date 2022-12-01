@@ -12,5 +12,10 @@
         <input type="email" name="email" id=""/>
         <button type="submit">Enter</button>
     </form>
+	{% if error_message %}
+	<ul>
+		{{ error_message }}
+	</ul>
+	{% endif %}
 </body>
 </html>
