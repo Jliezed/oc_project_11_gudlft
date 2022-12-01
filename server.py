@@ -55,8 +55,19 @@ def purchasePlaces():
     club = [c for c in clubs if c['name'] == request.form['club']][0]
     placesRequired = int(request.form['places'])
     competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
-    flash('Great-booking complete!')
-    return render_template('welcome.html', club=club, competitions=competitions)
+
+    # Use only available points
+    new_club_points = int(club['points']) - placesRequired
+
+    error_messages = []
+    if new_club_points < 0:
+        error_message = "You don't have enough points to book the seats requested"
+        error_messages.append(error_message)
+    else:
+        flash('Great-booking complete!')
+
+    return render_template('welcome.html', club=club, competitions=competitions,
+                           error_messages=error_messages)
 
 
 # TODO: Add route for points display
