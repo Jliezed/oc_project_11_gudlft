@@ -56,12 +56,15 @@ def purchasePlaces():
     placesRequired = int(request.form['places'])
     competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
 
-    # Use only available points
+    # Limit booking at 12 seats per competition
     new_club_points = int(club['points']) - placesRequired
 
     error_messages = []
     if new_club_points < 0:
         error_message = "You don't have enough points to book the seats requested"
+        error_messages.append(error_message)
+    if placesRequired > 12:
+        error_message = "You can only book 12 seats maximum"
         error_messages.append(error_message)
     else:
         flash('Great-booking complete!')
