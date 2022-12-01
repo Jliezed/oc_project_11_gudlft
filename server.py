@@ -104,8 +104,9 @@ def purchasePlaces():
                            error_messages=error_messages, points=placesRequired)
 
 
-# TODO: Add route for points display
-
+@app.route('/showClubs', methods=['GET'])
+def showClubs():
+    return render_template('clubs.html', clubs=clubs)
 
 @app.route('/logout')
 def logout():
