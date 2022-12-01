@@ -72,7 +72,11 @@ def purchasePlaces():
     if current_club_seats_competition >= 12:
         error_message = "You already booked 12 seats for this competition"
         error_messages.append(error_message)
-    else:
+    if new_competition_seats < 0:
+        error_message = "There are no enough seats"
+        error_messages.append(error_message)
+
+    if not error_messages:
         with open('competitions.json', "w") as file:
             for comp in competitions:
                 if comp["name"] == competition["name"]:
@@ -85,10 +89,19 @@ def purchasePlaces():
             }
             json.dump(data, file)
 
+        with open('clubs.json', "w") as file:
+            for c in clubs:
+                if c["name"] == club["name"]:
+                    c["points"] = str(new_club_points)
+            data = {
+                "clubs": clubs,
+            }
+            json.dump(data, file)
+
         flash('Great-booking complete!')
 
     return render_template('welcome.html', club=club, competitions=competitions,
-                           error_messages=error_messages)
+                           error_messages=error_messages, points=placesRequired)
 
 
 # TODO: Add route for points display
