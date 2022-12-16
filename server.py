@@ -1,21 +1,32 @@
 import json
+from pathlib import Path
 from flask import Flask, render_template, request, redirect, flash, url_for
+import environ
+
+project_dir = Path(__file__).parent
+
+env = environ.Env()
+environ.Env.read_env(env_file=str(project_dir / ".env"))
 
 
 def loadClubs():
-    with open('clubs.json') as c:
+    with open(project_dir / 'clubs.json') as c:
         listOfClubs = json.load(c)['clubs']
         return listOfClubs
 
 
 def loadCompetitions():
-    with open('competitions.json') as comps:
+    with open(project_dir / 'competitions.json') as comps:
         listOfCompetitions = json.load(comps)['competitions']
         return listOfCompetitions
 
 
 app = Flask(__name__)
-app.secret_key = 'something_special'
+app.config.update(
+    SECRET_KEY=env("SECRET_KEY"),
+    DEBUG=env("DEBUG"),
+    use_reloader=True,
+)
 
 competitions = loadCompetitions()
 clubs = loadClubs()
@@ -50,8 +61,9 @@ def book(competition, club):
 
 @app.route('/purchasePlaces', methods=['POST'])
 def purchasePlaces():
-    competition = [c for c in competitions if c['name'] == request.form['competition']][
-        0]
+    competition = \
+        [c for c in competitions if c['name'] == request.form['competition']][
+            0]
     club = [c for c in clubs if c['name'] == request.form['club']][0]
     placesRequired = int(request.form['places'])
     new_competition_seats = int(competition['numberOfPlaces']) - placesRequired
@@ -77,7 +89,7 @@ def purchasePlaces():
         error_messages.append(error_message)
 
     if not error_messages:
-        with open('competitions.json', "w") as file:
+        with open(project_dir / 'competitions.json', "w") as file:
             for comp in competitions:
                 if comp["name"] == competition["name"]:
                     comp["numberOfPlaces"] = str(new_competition_seats)
@@ -89,7 +101,7 @@ def purchasePlaces():
             }
             json.dump(data, file)
 
-        with open('clubs.json', "w") as file:
+        with open(project_dir / 'clubs.json', "w") as file:
             for c in clubs:
                 if c["name"] == club["name"]:
                     c["points"] = str(new_club_points)
@@ -107,6 +119,7 @@ def purchasePlaces():
 @app.route('/showClubs', methods=['GET'])
 def showClubs():
     return render_template('clubs.html', clubs=clubs)
+
 
 @app.route('/logout')
 def logout():
