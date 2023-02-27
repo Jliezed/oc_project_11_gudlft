@@ -135,35 +135,35 @@ Generate a test coverage report and a performance report using Locust.
 [oc-project-url]: https://openclassrooms.com/fr/paths/518-developpeur-dapplication-python
 
 [testing-shield]: https://img.shields.io/badge/-TESTING-blue?style=for-the-badge
-[testing-url]: https://docs.djangoproject.com/en/3.2/topics/testing/
+[testing-url]: https://en.wikipedia.org/wiki/Software_testing
 
 [unit-testing-shield]: https://img.shields.io/badge/-UNIT%20TESTING-blue?style=for-the-badge
-[unit-testing-url]: https://docs.djangoproject.com/en/3.2/topics/testing/tools/
+[unit-testing-url]: https://en.wikipedia.org/wiki/Unit_testing
 
 [pytest-shield]: https://img.shields.io/badge/-PYTEST-blue?style=for-the-badge
-[pytest-url]: https://docs.djangoproject.com/en/3.2/topics/testing/tools/
+[pytest-url]: https://docs.pytest.org/en/7.2.x/
 
 [pytest-mock-shield]: https://img.shields.io/badge/-PYTEST%20MOCK-blue?style=for-the-badge
-[pytest-mock-url]: https://docs.djangoproject.com/en/3.2/topics/testing/tools/
+[pytest-mock-url]: https://pypi.org/project/pytest-mock/
 
 [pytest-cov-shield]: https://img.shields.io/badge/-PYTEST%20COV-blue?style=for-the-badge
-[pytest-cov-url]: https://docs.djangoproject.com/en/3.2/topics/testing/tools/
+[pytest-cov-url]: https://pypi.org/project/pytest-cov/
 
 [debugging-shield]: https://img.shields.io/badge/-DEBUGGING-blue?style=for-the-badge
-[debugging-url]: https://docs.djangoproject.com/en/3.2/topics/logging/
+[debugging-url]: https://en.wikipedia.org/wiki/Debugger
 
 [bugs-shield]: https://img.shields.io/badge/-BUGS-blue?style=for-the-badge
-[bugs-url]: https://docs.djangoproject.com/en/3.2/topics/logging/
+[bugs-url]: https://en.wikipedia.org/wiki/Software_bug
 
 [qa-shield]: https://img.shields.io/badge/-QA-blue?style=for-the-badge
-[qa-url]: https://docs.djangoproject.com/en/3.2/topics/logging/
+[qa-url]: https://en.wikipedia.org/wiki/Quality_assurance
 
 [coverage-shield]: https://img.shields.io/badge/-COVERAGE-blue?style=for-the-badge
-[coverage-url]: https://docs.djangoproject.com/en/3.2/topics/logging/
+[coverage-url]: https://pypi.org/project/pytest-cov/
 
 [locust-shield]: https://img.shields.io/badge/-LOCUST-blue?style=for-the-badge
-[locust-url]: https://docs.djangoproject.com/en/3.2/topics/logging/
+[locust-url]: https://locust.io
 
 [flask-shield]: https://img.shields.io/badge/-FLASK-blue?style=for-the-badge
-[flask-url]: https://docs.djangoproject.com/en/3.2/topics/logging/
+[flask-url]: https://flask.palletsprojects.com/en/2.2.x/
 
